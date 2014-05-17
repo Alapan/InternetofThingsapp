@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			window.onload=function(){
+				var express=require('express');
+				var router=express.Router();
+				var fs=require('fs');
+				var i=0;
+				var xVal,yVal;
+				var luminosity=[],time=[],dps=[];
+
+				router.get('/',function(req,res){
+					fs.readFile('file.txt','utf8',function(err,data){
+						if(err){
+							throw err;
+						}
+						data.split(/\n/).forEach(function(item){
+							luminosity.push(Number(item.match(/Luminosity(.\d+[.]\d+)/)[1]));
+						});
+						data.split(/\n/).forEach(function(item){
+							time.push(Number(item.match(/Time(.\d+[.]\d+)/)[1]));
+						});
+					});
+					res.send('<p> Luminosity array read');
+				});
+				while(i<time.length){
+					xVal=time[i];
+					yVal=luminosity[i];
+					dps.push({x: xVal,y: yVal});
+					i++;
+				}
+				var chart=new CanvasJS.chart("chartContainer",{
+					title:{
+						text: "Live luminosity data"
+					},
+					axisX:{
+						title: "Time"
+					},
+					axisY:{
+						title: "Luminosity"
+					},
+					data: [{
+						type: "line",
+						dataPoints: dps
+						
+					}]
+				});
+				chart.render();
+				module.exports=router;
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Luminosity page</h1>
+		<div id="chartContainer" style="height: 300px;width= 100%;"></div>
+	</body>
+</html>

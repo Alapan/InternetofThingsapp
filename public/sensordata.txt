@@ -1,0 +1,28 @@
+Temperature 24.4 C, Humidity 25.6 % RH, Light 761
+time: 2014-5-16 10:0:39;Temperature 24.4 C, Humidity 25.6 % RH, Light 764
+time: 2014-5-16 10:0:41;Temperature 24.3 C, Humidity 25.6 % RH, Light 755
+time: 2014-5-16 10:0:43;Temperature 24.4 C, Humidity 25.6 % RH, Light 762
+time: 2014-5-16 10:0:45;Temperature 24.4 C, Humidity 25.6 % RH, Light 762
+time: 2014-5-16 10:0:47;Temperature 24.4 C, Humidity 25.6 % RH, Light 755
+time: 2014-5-16 10:0:49;Temperature 24.4 C, Humidity 25.6 % RH, Light 765
+time: 2014-5-16 10:0:51;Temperature 24.4 C, Humidity 25.6 % RH, Light 758
+time: 2014-5-16 10:0:53;Temperature 24.4 C, Humidity 25.6 % RH, Light 758
+time: 2014-5-16 10:0:55;Temperature 24.3 C, Humidity 25.6 % RH, Light 765
+time: 2014-5-16 10:0:57;Temperature 24.3 C, Humidity 25.6 % RH, Light 756
+time: 2014-5-16 10:0:59;Temperature 24.3 C, Humidity 25.6 % RH, Light 760
+time: 2014-5-16 10:1:1;Temperature 24.4 C, Humidity 25.6 % RH, Light 765
+time: 2014-5-16 10:1:3;Temperature 24.3 C, Humidity 25.6 % RH, Light 757
+time: 2014-5-16 10:1:5;Temperature 24.3 C, Humidity 25.6 % RH, Light 758
+time: 2014-5-16 10:1:7;Temperature 24.3 C, Humidity 25.6 % RH, Light 765
+time: 2014-5-16 10:1:9;Temperature 24.3 C, Humidity 25.6 % RH, Light 759
+time: 2014-5-16 10:1:11;Temperature 24.3 C, Humidity 25.6 % RH, Light 757
+time: 2014-5-16 10:1:13;Temperature 24.4 C, Humidity 25.6 % RH, Light 765
+time: 2014-5-16 10:1:15;Temperature 24.4 C, Humidity 25.6 % RH, Light 759
+time: 2014-5-16 10:1:17;Temperature 24.4 C, Humidity 25.6 % RH, Light 757
+time: 2014-5-16 10:1:19;Temperature 24.4 C, Humidity 25.6 % RH, Light 765
+time: 2014-5-16 10:1:21;Temperature 24.4 C, Humidity 25.6 % RH, Light 757
+time: 2014-5-16 10:1:23;Temperature 24.4 C, Humidity 25.6 % RH, Light 760
+time: 2014-5-16 10:1:25;Temperature 24.4 C, Humidity 25.6 % RH, Light 764
+time: 2014-5-16 10:1:27;Temperature 24.4 C, Humidity 25.6 % RH, Light 754
+time: 2014-5-16 10:1:29;Temperature 24.4 C, Humidity 25.6 % RH, Light 764
+time: 2014-5-16 10:1:31;

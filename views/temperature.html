@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			window.onload=function(){
+				var express=require('express');
+				var router=express.Router();
+				var fs=require('fs');
+				var i=0;
+				var xVal,yVal;
+				var temperature=[],time=[],dps=[];
+
+				router.get('/',function(req,res){
+					fs.readFile('file.txt','utf8',function(err,data){
+						if(err){
+							throw err;
+						}
+						data.split(/\n/).forEach(function(item){
+							temperature.push(Number(item.match(/Temperature(.\d+[.]\d+)/)[1]));
+						});
+						data.split(/\n/).forEach(function(item){
+							time.push(Number(item.match(/Time(.\d+[.]\d+)/)[1]));
+						});
+					});
+					res.send('<p> Temperature array read');
+				});
+				while(i<time.length){
+					xVal=time[i];
+					yVal=temperature[i];
+					dps.push({x: xVal,y: yVal});
+					i++;
+				}
+				var chart=new CanvasJS.chart("chartContainer",{
+					title:{
+						text: "Live temperature data"
+					},
+					axisX:{
+						title: "Time"
+					},
+					axisY:{
+						title: "Temperature"
+					},
+					data: [{
+						type: "line",
+						dataPoints: dps
+						
+					}]
+				});
+				chart.render();
+				module.exports=router;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="chartContainer" style="height: 300px;width= 100%;"></div>
+		<h1>Temperature page</h1>
+	</body>
+</html>
