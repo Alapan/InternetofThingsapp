@@ -15,8 +15,7 @@
 				</td>
 			</tr>
 		</table>
-		<p><div id="chartContainer" style="height: 300px;width= 100%;"></div></p>
-		<p><div id="chartContainer1" style="height: 300px;width= 100%;"></div></p>
+
 		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 		<script type="text/javascript">
 			
@@ -29,6 +28,7 @@
 				var dps=[];
 				var fileread;
 				var obj=document.getElementById(divid);
+				var readings = [];
 
 				if(window.XMLHttpRequest){
 					fileread=new XMLHttpRequest();
@@ -36,23 +36,34 @@
 				fileread.onreadystatechange=function(){
 					
 					if((fileread.readyState===4 || fileread.readyState===0) && fileread.status===200){
-						var text=fileread.responseText;
+						//var text=fileread.responseText;
 						var timetext=fileread.responseText;
 
 						//document.getElementById("chartContainer").innerHTML=text;
 						//document.getElementById("chartContainer").innerHTML=timetext;
 						timetext.split('\n').forEach(function(item){
 							var comma=item.indexOf(',');
-							time.push(item.substring(6,comma));
+							//var year = item.substring(6,14); // get year
+							var date = item.substring(6,comma).replace(/\s/,"T");
+							var dateUTC = new Date(date);
+							//console.log(dateUTC.getTime());
+							
+							
+							//var birthday = new Date("1995-12-17T03:24:00");
+
+/*							time.push(dateUTC.getTime());
 							time.toString();
 							document.getElementById("chartContainer").innerHTML=time;
+
+
+							humidity.push(Number(item.match(/Humidity(.\d+[.]\d+)/)[1]));
+							humidity.toString();*/
+							readings.push([dateUTC.getTime(), Number(item.match(/Humidity(.\d+[.]\d+)/)[1]) ]);
+							//document.getElementById("chartContainer1").innerHTML=humidity;
+
 						});
 						
-						text.split('\n').forEach(function(item){
-							humidity.push(Number(item.match(/Humidity(.\d+[.]\d+)/)[1]));
-							humidity.toString();
-							document.getElementById("chartContainer1").innerHTML=humidity;
-						});
+
 						
 
 						showGraph();
@@ -92,21 +103,30 @@
 					console.log("inside show graph");
 
 				 $('#container').highcharts({
+				 	chart: {
+		                zoomType: 'x'
+		            },
             title: {
-                text: 'Monthly Average Temperature',
+                text: 'Humidity Reading',
                 x: -20 //center
             },
             subtitle: {
-                text: 'Source: WorldClimate.com',
+                text: 'Humidity',
                 x: -20
             },
             xAxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            	type: 'datetime',
+/*            	labels: {
+
+            		formatter: function(){
+            			return this.value;
+            		}
+            	}*/
+                //categories: time
             },
             yAxis: {
                 title: {
-                    text: 'Temperature (°C)'
+                    text: 'Humidity (%)'
                 },
                 plotLines: [{
                     value: 0,
@@ -115,7 +135,7 @@
                 }]
             },
             tooltip: {
-                valueSuffix: '°C'
+                valueSuffix: 'RH'
             },
             legend: {
                 layout: 'vertical',
@@ -124,17 +144,9 @@
                 borderWidth: 0
             },
             series: [{
-                name: 'Tokyo',
-                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-            }, {
-                name: 'New York',
-                data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
-            }, {
-                name: 'Berlin',
-                data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
-            }, {
-                name: 'London',
-                data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+
+            	data: readings
+
             }]
         });}
 
