@@ -18,7 +18,9 @@
 
 				var i=0;
 				var xVal,yVal;
-				var humidity=[],time=[],dps=[];
+				var humidity=[];
+				var time=[];
+				var dps=[];
 				var fileread;
 				var obj=document.getElementById(divid);
 
@@ -29,15 +31,25 @@
 					
 					if((fileread.readyState===4 || fileread.readyState===0) && fileread.status===200){
 						var text=fileread.responseText;
+						var timetext=fileread.responseText.split('\n').join('<br/>');
+
+						//document.getElementById("chartContainer").innerHTML=text;
+						//document.getElementById("chartContainer").innerHTML=timetext;
+						timetext.split('<br/>').forEach(function(item){
+							var comma=item.indexOf(',');
+							time.push(item.substring(6,comma));
+							time.toString();
+							document.getElementById("chartContainer").innerHTML=time;
+						});
 						
-						text.split("\n").forEach(function(item){
-							document.getElementById("chartContainer").innerHTML=item;
+						text.split('\n').forEach(function(item){
 							humidity.push(Number(item.match(/Humidity(.\d+[.]\d+)/)[1]));
+							humidity.toString();
+							document.getElementById("chartContainer").innerHTML=humidity;
 						});
-						text.split(";").forEach(function(item){
-							time.push(Number(item.match(/time(.\d+[.]\d+)/)[1]));
-						});
-							
+						
+						
+
 					}
 				}
 				fileread.open("GET","sensordata.txt",true);
