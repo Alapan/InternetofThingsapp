@@ -75,4 +75,3 @@ time: 2014-5-16 5:45:39,Temperature 22.6 C, Humidity 24.9 % RH, Light 453
 time: 2014-5-16 5:45:41,Temperature 22.5 C, Humidity 24.9 % RH, Light 453
 time: 2014-5-16 5:45:43,Temperature 22.6 C, Humidity 24.8 % RH, Light 453
 time: 2014-5-16 5:45:45,Temperature 22.6 C, Humidity 24.7 % RH, Light 452
-time: 2014-5-16 5:45:54,
