@@ -5,13 +5,14 @@
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="functions.js"></script>
 	</head>
 	<body>
 		<h3>Humidity page</h3>
 		<table>
 			<tr>
 				<td>
-					<button type="button" onclick="humidgraph('chartContainer')">View live humidity data</button> 
+					<button type="button" onclick="parseData('Humidity')">View live humidity data</button> 
 				</td>
 			</tr>
 		</table>
@@ -19,139 +20,7 @@
 		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 		<script type="text/javascript">
 			
-			function humidgraph(divid){
 
-				var i=0;
-				var xVal,yVal;
-				var humidity=[];
-				var time=[];
-				var dps=[];
-				var fileread;
-				var obj=document.getElementById(divid);
-				var readings = [];
-
-				if(window.XMLHttpRequest){
-					fileread=new XMLHttpRequest();
-				}
-				fileread.onreadystatechange=function(){
-					
-					if((fileread.readyState===4 || fileread.readyState===0) && fileread.status===200){
-						//var text=fileread.responseText;
-						var timetext=fileread.responseText;
-
-						//document.getElementById("chartContainer").innerHTML=text;
-						//document.getElementById("chartContainer").innerHTML=timetext;
-						timetext.split('\n').forEach(function(item){
-							var comma=item.indexOf(',');
-							//var year = item.substring(6,14); // get year
-							var date = item.substring(6,comma).replace(/\s/,"T");
-							var dateUTC = new Date(date);
-							//console.log(dateUTC.getTime());
-							
-							
-							//var birthday = new Date("1995-12-17T03:24:00");
-
-/*							time.push(dateUTC.getTime());
-							time.toString();
-							document.getElementById("chartContainer").innerHTML=time;
-
-
-							humidity.push(Number(item.match(/Humidity(.\d+[.]\d+)/)[1]));
-							humidity.toString();*/
-							readings.push([dateUTC.getTime(), Number(item.match(/Humidity(.\d+[.]\d+)/)[1]) ]);
-							//document.getElementById("chartContainer1").innerHTML=humidity;
-
-						});
-						
-
-						
-
-						showGraph();
-						
-
-					}
-				}
-				fileread.open("GET","sensordata.txt",true);
-				fileread.send();
-				
-				while(i<time.length){
-					xVal=time[i];
-					yVal=humidity[i];
-					dps.push({x: xVal,y: yVal});
-					i++;
-				}
-				/*var chart=new CanvasJS.chart("chartContainer",{
-					title:{
-						text: "Live humidity data"
-					},
-					axisX:{
-						title: "Time"
-					},
-					axisY:{
-						title: "Humidity"
-					},
-					data: [{
-						type: "line",
-						dataPoints: dps
-						
-					}]
-				});
-				chart.render();*/
-
-
-				var showGraph = function(){
-					console.log("inside show graph");
-
-				 $('#container').highcharts({
-				 	chart: {
-		                zoomType: 'x'
-		            },
-            title: {
-                text: 'Humidity Reading',
-                x: -20 //center
-            },
-            subtitle: {
-                text: 'Humidity',
-                x: -20
-            },
-            xAxis: {
-            	type: 'datetime',
-/*            	labels: {
-
-            		formatter: function(){
-            			return this.value;
-            		}
-            	}*/
-                //categories: time
-            },
-            yAxis: {
-                title: {
-                    text: 'Humidity (%)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: 'RH'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-
-            	data: readings
-
-            }]
-        });}
-
-
-			}
 		</script>
 	</body>
 </html>

@@ -31,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/temperature',temperature);
 app.use('/humidity',humidity);
+app.use('/luminosity',luminosity);
 //app.use('/luminosity',luminosity);
 
 // add a listener for connection from client
