@@ -9,12 +9,31 @@
 	</head>
 	<body>
 		<h3>Temperature page</h3>
+
+
+
 		<table>
-			<tr>
+		<tr>
+                        <td>Enter the time span for which you want to view data</td>
+                                <td>
+                                        <select id="optvalue">
+                                                <option value="0.5">last 30 minutes</option>
+                                                <option value="1">last 1 hour</option>
+                                                <option value="5">last 5 hours</option>
+                                                <option value="24">last 24 hours</option>
+                                        </select>
+                                </td>
+                                <td>
+                                        <button type="button" onclick="viewfunc('Temperature','optvalue')">View graph</button>
+                                </td>
+                        </tr>
+
+
+<!-- 			<tr>
 				<td>
 					<button type="button" onclick="parseData('Temperature')">View live temperature data</button> 
 				</td>
-			</tr>
+			</tr> -->
 		</table>
 
 		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
