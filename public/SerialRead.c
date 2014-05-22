@@ -135,24 +135,23 @@ int main(int argc, char *argv[])
     
     while(1)
     {
-    	if( fd==-1 ) error("couldn't open port");
-    	memset(buf,0,buf_max);  // 
+        if( fd==-1 ) error("couldn't open port");
+        memset(buf,0,buf_max);  // 
         memset(time_str, 0, 100);
-    	serialport_read_until(fd, buf, eolchar, buf_max, timeout);
-    	//printf("%s\n", buf);
+        serialport_read_until(fd, buf, eolchar, buf_max, timeout);
+        //printf("%s\n", buf);
 
-	//--- write to the file to store the sensor data ---
+    //--- write to the file to store the sensor data ---
         if(strstr(buf,"Polled to quick") == 0)
-	{
-        	file = fopen( "sensordata.txt", "a+");
-		time_t t = time(NULL);
-		struct tm tm = *localtime(&t);
-		sprintf(time_str, "time: %d-%d-%d %d:%d:%d;", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
-		//fputs(time_str, file);
-		fputs(time_str, file);
-        	fputs(buf, file);
-        	fclose (file);
-	}
+    {
+            file = fopen( "sensordata.txt", "a+");
+        time_t t = time(NULL);
+        struct tm tm = *localtime(&t);
+        sprintf(time_str, "time: %d-%02d-%02d %02d:%02d:%02d,",tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+        fputs(time_str, file);
+            fputs(buf, file);
+            fclose (file);
+    }
     }  
    return 0;
 }

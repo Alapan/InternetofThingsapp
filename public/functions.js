@@ -70,7 +70,7 @@ function parseData(type){
                             var date = item.substring(6,comma).replace(/\s/,"T");
                             var dateUTC = (new Date(date)).getTime();
                             var temperature = Number(item.match(/Temperature(.\d+[.]\d+)/)[1]);
-                            if(temperature != null && currentTime <= dateUTC)
+                            if(temperature != null )
                                 return readings.push([dateUTC, temperature ]);
 
                             else 
@@ -84,7 +84,7 @@ function parseData(type){
                             var date = item.substring(6,comma).replace(/\s/,"T");
                             var dateUTC = (new Date(date)).getTime();
                             var humidity = Number(item.match(/Humidity(.\d+[.]\d+)/)[1]);
-                            if(humidity != null && currentTime <= dateUTC)
+                            if(humidity != null)
                                return readings.push([dateUTC, humidity ]);
                             else
                                 return false;
@@ -94,7 +94,7 @@ function parseData(type){
                     case 'Luminosity':
                         var str = "Light";
                         
-                        
+                        // /&& currentTime <= dateUTC
                         timetext.split('\n').every(function(item){
                             var comma=item.indexOf(',');
                             var date = item.substring(6,comma).replace(/\s/,"T");
@@ -102,7 +102,7 @@ function parseData(type){
                             var start = item.indexOf('Light') + str.length + 1;
                             var end = item.length;
                             var light =Number(item.substring(start,end));
-                            if(light != null && currentTime <= dateUTC)
+                            if(light != null )
                                 return readings.push([dateUTC,light ]);    
                             else 
                                 return false;
