@@ -9,15 +9,24 @@
 	</head>
 	<body>
 		<h3>Humidity page</h3>
-		<table>
-			<tr>
-				<td>
-					<button type="button" onclick="parseData('Humidity')">View live humidity data</button> 
-				</td>
-			</tr>
-		</table>
+		<tr>
+            <td>Enter the time span for which you want to view data</td>
+                    <td>
+                            <select id="optvalue">
+                                    <option value="0.5">last 30 minutes</option>
+                                    <option value="1">last 1 hour</option>
+                                    <option value="5">last 5 hours</option>
+                                    <option value="24">last 24 hours</option>
+                            </select>
+                    </td>
+                    <td>
+                            <button type="button" onclick="viewfunc('Humidity','optvalue')">View graph</button>
+            </td>
+        </tr>
+
 
 		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<<<<<<< HEAD
 		<script type="text/javascript">
 			
 <<<<<<< HEAD
@@ -90,5 +99,8 @@
 
 >>>>>>> 77a3c6a01c3e1c65622f697a4168a7332b1e0fd1
 		</script>
+=======
+
+>>>>>>> e5963fe2011846c01dcf32e05fff7bf6f4384bf4
 	</body>
 </html>
