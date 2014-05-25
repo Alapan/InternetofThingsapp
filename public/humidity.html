@@ -1,19 +1,26 @@
 <html>
+<title>Humidity</title>
 	<head>
-		<title>Humidity</title>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="functions.js"></script>
 	</head>
 	<body>
 		<h3>Humidity page</h3>
 		<table>
 			<tr>
 				<td>
-					<button type="button" onclick="humidgraph('chartContainer')">View live humidity data</button> 
+					<button type="button" onclick="parseData('Humidity')">View live humidity data</button> 
 				</td>
 			</tr>
 		</table>
-		<p><div id="chartContainer" style="height: 300px;width= 100%;"></div></p>
+
+		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 		<script type="text/javascript">
 			
+<<<<<<< HEAD
 			function humidgraph(divid){
 
 				var i=0;
@@ -79,6 +86,9 @@
 				});
 				chart.render();*/
 			}
+=======
+
+>>>>>>> 77a3c6a01c3e1c65622f697a4168a7332b1e0fd1
 		</script>
 	</body>
 </html>
