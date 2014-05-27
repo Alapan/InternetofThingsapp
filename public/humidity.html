@@ -2,105 +2,29 @@
 <title>Humidity</title>
 	<head>
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-<script src="functions.js"></script>
+		<script src="http://code.highcharts.com/modules/exporting.js"></script>
+		<script src="functions.js"></script>
 	</head>
 	<body>
 		<h3>Humidity page</h3>
-		<tr>
-            <td>Enter the time span for which you want to view data</td>
-                    <td>
-                            <select id="optvalue">
-                                    <option value="0.5">last 30 minutes</option>
-                                    <option value="1">last 1 hour</option>
-                                    <option value="5">last 5 hours</option>
-                                    <option value="24">last 24 hours</option>
-                            </select>
-                    </td>
-                    <td>
-                            <button type="button" onclick="viewfunc('Humidity','optvalue')">View graph</button>
-            </td>
-        </tr>
-
-
+		<table>
+			<tr>
+		    		<td>Enter the time span for which you want to view data</td>
+		            	<td>
+		                    <select id="optvalue">
+		                            <option value="0.5">last 30 minutes</option>
+		                            <option value="1">last 1 hour</option>
+		                            <option value="5">last 5 hours</option>
+		                            <option value="24">last 24 hours</option>
+		                    </select>
+		            	</td>
+		            	<td>
+		                    <button type="button" onclick="viewfunc('Humidity','optvalue')">View graph</button>
+		    		</td>
+			</tr>
+		</table>
 		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-<<<<<<< HEAD
-		<script type="text/javascript">
-			
-<<<<<<< HEAD
-			function humidgraph(divid){
-
-				var i=0;
-				var xVal,yVal;
-				var humidity=[];
-				var time=[];
-				var dps=[];
-				var fileread;
-				var obj=document.getElementById(divid);
-
-				if(window.XMLHttpRequest){
-					fileread=new XMLHttpRequest();
-				}
-				fileread.onreadystatechange=function(){
-					
-					if((fileread.readyState===4 || fileread.readyState===0) && fileread.status===200){
-						var text=fileread.responseText;
-						var timetext=fileread.responseText.split('\n').join('<br/>');
-
-						//document.getElementById("chartContainer").innerHTML=text;
-						//document.getElementById("chartContainer").innerHTML=timetext;
-						timetext.split('<br/>').forEach(function(item){
-							var comma=item.indexOf(',');
-							time.push(item.substring(6,comma));
-							time.toString();
-							document.getElementById("chartContainer").innerHTML=time;
-						});
-						
-						/*text.split('\n').forEach(function(item){
-							humidity.push(Number(item.match(/Humidity(.\d+[.]\d+)/)[1]));
-							humidity.toString();
-							document.getElementById("chartContainer").innerHTML=humidity;
-						});*/
-						
-						
-
-					}
-				}
-				fileread.open("GET","sensordata.txt",true);
-				fileread.send();
-				
-				while(i<time.length){
-					xVal=time[i];
-					yVal=humidity[i];
-					dps.push({x: xVal,y: yVal});
-					i++;
-				}
-				/*var chart=new CanvasJS.chart("chartContainer",{
-					title:{
-						text: "Live humidity data"
-					},
-					axisX:{
-						title: "Time"
-					},
-					axisY:{
-						title: "Humidity"
-					},
-					data: [{
-						type: "line",
-						dataPoints: dps
-						
-					}]
-				});
-				chart.render();*/
-			}
-=======
-
->>>>>>> 77a3c6a01c3e1c65622f697a4168a7332b1e0fd1
-		</script>
-=======
-
->>>>>>> e5963fe2011846c01dcf32e05fff7bf6f4384bf4
 	</body>
 </html>
