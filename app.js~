@@ -13,6 +13,7 @@ var humidity= require('./routes/humidity');
 var luminosity=require('./routes/luminosity');
 
 var app = express();
+//var socket=require('socket.io').listen(app);    // For socket.io communication
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,6 +32,19 @@ app.use('/', routes);
 app.use('/temperature',temperature);
 app.use('/humidity',humidity);
 app.use('/luminosity',luminosity);
+//app.use('/luminosity',luminosity);
+
+// add a listener for connection from client
+//socket.on('connection', function(client){
+//	client.on('message', function(event){
+//		console.log("Received message from client".event);
+//	});
+	// listener for disconnection
+//	client.on('disconnect',function(){
+//		clearInterval(interval);
+//		console.log("Server has disconnected!");
+//	});	
+//})
 
 
 /// catch 404 and forwarding to error handler
