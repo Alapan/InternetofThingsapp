@@ -143,28 +143,15 @@ int main(int argc, char *argv[])
 
     //--- write to the file to store the sensor data ---
         if(strstr(buf,"Polled to quick") == 0)
-<<<<<<< HEAD
-	{
-        	file = fopen( "sensordata.txt", "a+");
-		time_t t = time(NULL);
-		struct tm tm = *localtime(&t);
-		sprintf(time_str, "time: %d-%d-%d %d:%d:%d;", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
-		//fputs(time_str, file);
-		fputs(time_str, file);
-        	fputs(buf, file);
-        	fclose (file);
-	}
-=======
-    {
+        {
             file = fopen( "sensordata.txt", "a+");
-        time_t t = time(NULL);
-        struct tm tm = *localtime(&t);
-        sprintf(time_str, "time: %d-%02d-%02d %02d:%02d:%02d,",tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
-        fputs(time_str, file);
+            time_t t = time(NULL);
+            struct tm tm = *localtime(&t);
+            sprintf(time_str, "time: %d-%02d-%02d %02d:%02d:%02d,",tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+            fputs(time_str, file);
             fputs(buf, file);
             fclose (file);
-    }
->>>>>>> 77a3c6a01c3e1c65622f697a4168a7332b1e0fd1
+        }
     }  
    return 0;
 }
